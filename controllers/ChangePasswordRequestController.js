@@ -10,7 +10,7 @@ class ChangePasswordRequestController {
     const user = await User.findOne({ email: email });
     if (!user) {
       return res.status(400).json({
-        msg: `A user with email = ${email} does not exist in the system`,
+        msg: `A user with email ${email} does not exist in the system`,
       });
     }
 

@@ -1,3 +1,60 @@
+MONKEY PESA:
+
 Monkey Pesa is integrated marketing, sales, support and 
-CRM solution designed to help small to midsize enterprises
- acquire, engage and convert website visitors into customers.
+Customer Rellationship Manangement solution designed to help 
+small to midsize enterprise acquire, engage and convert website 
+visitors into customers.
+
+Working towards a minimum viable product:
+
+PROGRESS:
+Done:
+-log in with JWT 
+-Authentication
+-Registering users
+-Retriving users, editing user info and deleting users account
+-Adding new contacts(edit, delete and retrieving contacts)
+-forgot password and reset functionality
+
+IN PROCESS:
+-send  and receive email with smtp Transport : for Gmail service
+
+NEXT:
+SMS sending and recieving
+
+
+IN NEED:
+-landing page with log in log out 
+-Display page for contact
+-Reupdate the trello board in Kenneth presence
+
+
+QUESTIONS:
+This is going to be like a software that a company might need to run 
+its day to day management.
+
+I see we are looking and mainly marketting and sales.
+Am not sure if we should restrict to that.
+
+
+So for a campany who buys the software lets assume its for marketing 
+and sales
+
+-How many users of the system do we have 
+-Who logs in and out
+-What kind of activities do each of the users do with the system for the case 
+of marketting and sales
+
+
+
+
+
+
+
+
+
+
+
+
+
+
