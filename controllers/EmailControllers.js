@@ -7,15 +7,14 @@ class EmailControllers {
         let data = req.body
         let smtpTransport = nodemailer.createTransport({
             service:"gmail",
-            // port: 465,
             port: 587,
             authentication: 'plain',
             auth:{
                 user:"onencanemma9@gmail.com",
                 pass:"Ehelisemmy90844#",
-                secure:false
+                secure: false
             }
-        })
+        });
 
         let mailOption = {
             from: data.email,
@@ -24,11 +23,11 @@ class EmailControllers {
             html:
 
                 `<div style="font-family: sans-serif">
-                <h3@MonkeyPesa</h3>
-                <h5>Sender: ${data.lastname} ${data.name} </5>  
-                <p>Sender's email: ${data.email} </p>
+                <h2>${data.subject}</h2>
+                <h5>message from: ${data.lastname} ${data.name} </5>  
+                <p>email: ${data.email} </p>
                 <h3>Message</h3>
-                <hr/>
+                
                 <p>${data.message} </p>
                 </div>
                    `
