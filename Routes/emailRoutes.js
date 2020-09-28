@@ -1,10 +1,25 @@
 const express = require('express');
 const router = express.Router();
 
-const EmailController = require("../controllers/EmailControllers")
-const emailController = new EmailController();
+const EmailSendController = require("../controllers/EmailSendControllers");
+const emailSendController = new EmailSendController();
+
+const EmailReceivedController = require("../controllers/EmailRecievedControllers");
+const emailReceivedController = new EmailReceivedController();
+
+//Sent Email
+router.post("/", (req, res) => emailSendController.sendMail(req, res));
+router.get("/", (req, res) => emailSendController.getAllSentEmail(req, res));
 
 
-router.post("/", (req, res) => emailController.sendMail(req, res));
+//Received Email
+router.get("/received", (req, res) => emailReceivedController.getAllReceivedEmail(req, res));
+
+
+
+
+
+
+
 
 module.exports = router;

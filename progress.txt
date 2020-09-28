@@ -1,7 +1,7 @@
 MONKEY PESA:
 
 Monkey Pesa is integrated marketing, sales, support and 
-Customer Rellationship Manangement solution designed to help 
+Customer Relationship Manangement solution designed to help 
 small to midsize enterprise acquire, engage and convert website 
 visitors into customers.
 
@@ -18,7 +18,7 @@ Done:
 
 
 IN PROCESS:
--Send  and receive email with smtp Transport : for Gmail service
++ 
 -Email: Easily send email via the dashboard and
 -keep a log of the email Note: 
 -Its should facilitate 2-way communication where you can send and receive emails For email send: 
@@ -56,3 +56,64 @@ and sales
 -What kind of activities do each of the users do with the system for the case 
 of marketting and sales
 
+
+//RETRIEVING ATTACHMENTS
+
+
+  //RETRIEVE EMAIL ATTACHMENT
+    var config = {
+        imap: {
+            user: 'onencanemma9@gmail.com',
+            password: 'Ehelisemmy90844#',
+            host: 'imap.gmail.com',
+            port: 993,
+            tls: true,
+            authTimeout: 3000
+        }
+    };
+
+    imaps.connect(config).then(function (connection) {
+
+      connection.openBox('INBOX').then(function () {
+
+      // Fetch emails from the last 24h
+      var delay = 24 * 3600 * 1000;
+      var yesterday = new Date();
+      yesterday.setTime(Date.now() - delay);
+      yesterday = yesterday.toISOString();
+      var searchCriteria = ['UNSEEN', ['SINCE', yesterday]];
+      var fetchOptions = { bodies: ['HEADER.FIELDS (FROM TO SUBJECT DATE)'], struct: true };
+  
+      // retrieve only the headers of the messages
+      return connection.search(searchCriteria, fetchOptions);
+      }).then(function (messages) {
+      var attachments = [];
+  
+      messages.forEach(function (message) {
+          var parts = imaps.getParts(message.attributes.struct);
+          attachments = attachments.concat(parts.filter(function (part) {
+              return part.disposition && part.disposition.type.toUpperCase() === 'ATTACHMENT';
+          }).map(function (part) {
+              // retrieve the attachments only of the messages with attachments
+              return connection.getPartData(message, part)
+                  .then(function (partData) {
+                      return {
+                        filename: part.disposition.params.filename,
+                        data: partData
+                      };
+                  });
+          }));
+      });
+      
+      return Promise.all(attachments);
+      }).then(function (attachments) {
+      console.log(attachments);
+      // =>
+      //    [ { filename: 'cats.jpg', data: Buffer() },
+      //      { filename: 'pay-stub.pdf', data: Buffer() } ]
+      });
+
+    });
+    
+    
+    //END OF RETRIEVE EMAIL ATTACHMENT

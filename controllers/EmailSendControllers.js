@@ -2,8 +2,11 @@ const nodemailer = require('nodemailer');
 const Email = require("../models/emailModel")
 
 
-class EmailControllers {
+class EmailSendControllers {
+
+//SEND EMAIL
     async sendMail(req, res){
+        //creating smtp transport to send and retrieve email
         let data = req.body
         let smtpTransport = nodemailer.createTransport({
             service:"gmail",
@@ -60,8 +63,22 @@ class EmailControllers {
         smtpTransport.close()
 
     }
+
+
+    //GET ALL EMAIL SENT
+    async getAllSentEmail(req, res) {
+        try {
+            const email =   await Email.find();
+            //send response
+            res.status(200).json(email)
+        } catch(err){
+            res.status(500).json({ error: err.message})
+        }
+    }
+
+
 }
 
 
-module.exports = EmailControllers;
+module.exports = EmailSendControllers;
 

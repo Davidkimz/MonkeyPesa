@@ -1,0 +1,12 @@
+{
+    "LABEL":"https://www.googleapis.com/auth/gmail.labels",
+    "SEND":"https://www.googleapis.com/auth/gmail.send",
+    "READ_ONLY":"https://www.googleapis.com/auth/gmail.readonly",
+    "COMPOSE":"https://www.googleapis.com/auth/gmail.compose",
+    "INSERT":"https://www.googleapis.com/auth/gmail.insert",
+    "MODIFY":"https://www.googleapis.com/auth/gmail.modify",
+    "META_DATA":"https://www.googleapis.com/auth/gmail.metadata",
+    "SETTING_BASICS":"https://www.googleapis.com/auth/gmail.settings.basic",
+    "SETTING_SHARING":"https://www.googleapis.com/auth/gmail.settings.sharing",
+    "FULL_ACCESS":"https://mail.google.com/"
+  }
