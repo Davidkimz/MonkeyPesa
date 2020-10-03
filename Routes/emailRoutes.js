@@ -13,7 +13,7 @@ router.get("/", (req, res) => emailSendController.getAllSentEmail(req, res));
 
 
 //Received Email
-router.get("/received", (req, res) => emailReceivedController.getAllReceivedEmail(req, res));
+router.get("/received", (req, res) => emailReceivedController.getAllReceivedEmails(req, res));
 
 
 

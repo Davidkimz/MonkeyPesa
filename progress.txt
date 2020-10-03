@@ -8,6 +8,8 @@ visitors into customers.
 Working towards a minimum viable product:
 
 PROGRESS:
+
+
 Done:
 -log in with JWT 
 -Authentication
@@ -15,11 +17,10 @@ Done:
 -Retriving users, editing user info and deleting users account
 -Adding new contacts(edit, delete and retrieving contacts)
 -forgot password and reset functionality
-
+-Email: Easily send email via the dashboard an
+-Recieve email 
 
 IN PROCESS:
-+ 
--Email: Easily send email via the dashboard and
 -keep a log of the email Note: 
 -Its should facilitate 2-way communication where you can send and receive emails For email send: 
 -We could leverage Gmail API for (Gsuite clients) -We could offer businessname.client @monkeypesa emails 
@@ -29,7 +30,7 @@ IN PROCESS:
 NEXT:
 Recieving email
 Displaying email per account
-
+Intergrating Express js with Twillio credentials to  create an API for SMS sending
 
 IN NEED:
 -landing page with log in log out 
@@ -117,3 +118,63 @@ of marketting and sales
     
     
     //END OF RETRIEVE EMAIL ATTACHMENT
+
+-organise the email function
+-Implement two factor authentication 
+-Reseach on Africa stocking for sms msg intergration
+-where to i apply foreign keys
+-defining user for the user.role restrict to  function       *
+-seesion of a logged in user using the JWt and the activity of every user      *
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FUNCTIONALITES:
+PASSWORD RESET:
+-provide your email if forgotten password
+-code is sent to your email(for now simply get the cord from the database)
+-enter the code 
+-passowrd is changed if you try logging in using old password.nothing happens
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,7 +1,6 @@
 const fs = require("fs");
 const readline = require("readline");
 const { google } = require("googleapis");
-const mimeMessage = require("mime-message");
 const rp = require("request-promise");
 const parseMessage = require("gmail-api-parse-message");
 const token = require("./token.json");
@@ -48,7 +47,7 @@ function authorize(credentials, callback) {
   // Check if we have previously stored a token.
   fs.readFile(TOKEN_PATH, async (err, token) => {
     //Generate access token and refresh token
-    // await getNewToken(oAuth2Client, callback);
+    await getNewToken(oAuth2Client, callback);
 
     oAuth2Client.setCredentials(JSON.parse(token));
     callback(oAuth2Client);
@@ -116,11 +115,11 @@ async function listMessages(auth) {
   const gmail = google.gmail({ version: "v1", auth });
   let response = await gmail.users.messages.list({
     userId: "me",
-    maxResults: 30,
+    maxResults: 3,
   });
   // console.log(response.data.messages);
 
-  const newestMessageId = response["data"]["messages"][26]["id"];
+  const newestMessageId = response["data"]["messages"][0]["id"];
   rp({
     uri: `https://www.googleapis.com/gmail/v1/users/me/messages/${newestMessageId}?access_token=${token.access_token}`,
     json: true,

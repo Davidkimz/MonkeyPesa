@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { findById } = require("../models/userModel");
 
 
 class UserController {
@@ -62,6 +63,29 @@ async getAllAccounts(req, res) {
         res.status(500).json({ error: err.message})
     }
 }
+//GET ONE ACCOUNT
+async getAccount(req, res){
+    try {
+      const user =  await User.findById(req.params.id);
+      res.status(200).json(user)
+    } catch (err) {
+       res.status(500).json({ error: err.message})
+    }
+}
+
+
+
+//DELETE ONE  ACONTACT
+async deleteAccount(req, res){
+    try {
+        await User.findByIdAndDelete(req.params.id)
+           return res.status(400).json({msg: `User account has been deleted`})
+
+    } catch(err){
+       res.status(404).json({ error: err.message})
+    }
+}
+
 
 
 //LOGIN USER
@@ -83,7 +107,7 @@ async getAllAccounts(req, res) {
         if(!isMatch)
         return res.status(400).json({msg: "Invalid Credentials"})
     
-        const token = jwt.sign({ id: user._id}, process.env.JWT_SECRET);
+        const token = jwt.sign({ id: user._id}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRES_IN});
         res.json({
             token,
             user: {
@@ -112,7 +136,6 @@ async deleteUser(req, res){
 async isTokenValid(req, res){  
         try {
             const token = req.header("x-auth-token");
-            console.log(token)
             if(!token) return res.json(false);
     
             const verified = jwt.verify(token, process.env.JWT_SECRET)
@@ -125,6 +148,11 @@ async isTokenValid(req, res){
             res.status(500).json({error: err.message});
            }
     }
+    
+
+     logout(req, res) {
+        res.redirect('/');
+      }
 
 }
 
