@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sign up - MonkeyPesa</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- BootStrap-->
+  <link rel="stylesheet" href="../styles/bootstrap-4.5/css/bootstrap.min.css">
+  <!-- Font Awesome  -->
+  <link rel="stylesheet" href="../styles/fontawesome-free-5.15/css/all.min.css">
+  <!-- custom style -->
+  <link rel="stylesheet" href="../styles/styles.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition body-custom">
+  <div class=" register-page">
+
+    <div class="register-box" style="width: 40%">
+      <div class="register-logo">
+       <a href="#"><img src="../img/logo.png" style="height: 30px; width: auto;"></a>
+       <!-- /.register-logo -->
+      </div>
+      <p class="login-box-msg">Have an account? <a href="login.html">Sign in</a></p>
+
+
+      <div class="box">
+        <div class="box-body register-card-body">
+          <form action="index.html" method="post">
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group mb-3">
+                  <label>First name *</label>
+                  <input oninput="checkInputReg()" id="register-first-name" type="text" class="form-control" placeholder="">              
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group mb-3">
+                  <label>Last name *</label>
+                  <input oninput="checkInputReg()" id="register-last-name" type="text" class="form-control" placeholder="">              
+                </div>
+              </div>
+            </div>   
+
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group mb-3">
+                  <label>Email Address *</label>
+                  <input oninput="checkInputReg()" id="register-email" type="email" class="form-control" placeholder="">  
+                  <span><small>name@company.com</small></span>            
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group mb-3">
+                  <label>Phone *</label>
+                  <input oninput="checkInputReg()" id="register-phone-number" type="tel" class="form-control" placeholder=""> <span><small>format. 256770897128. exclude + sign</small></span>      
+                </div>
+              </div>
+            </div>      
+            
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label>Password *</label>
+                  <input oninput="checkInputReg()" id="register-password" type="password" class="form-control" placeholder=""> <span><small>min. 6 characters</small></span>
+                    <span class="float-right"><a onclick="showPassword()" class="text-primary">show password</a></span>        
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label>Password confirm *</label>
+                  <input oninput="checkInputReg()" id="register-confirm-password" type="password" class="form-control" placeholder="">              
+                </div>
+              </div>
+            </div>       
+
+            <div class="row">
+              <div class="col-12 mb-4">
+                <button type="submit" class="sign-up btn btn-primary btn-block btn-mp-disabled" disabled="">Register</button>
+              </div>
+              <!-- /.col -->
+            </div>
+
+          </form>
+
+          <div class="d-block text-center mb-3 text-xs">
+            By creating a Monkeypesa account, you're agreeing to accept our <a href="">Terms and conditions</a>.
+          </div>
+
+          <hr/>
+
+          <div class="d-block text-center mb-3 text-xs">
+            MonkeyPesa uses the information you provide to contact you about our relevant content, products, and services. You may unsubscribe from these communications at any time. For more information, please read our <a href="">Privacy policy</a>.
+          </div>
+
+          <div class="d-block text-center mb-2 text-xs">&copy; 2020 MonkeyPesa. All Rights Reserved</div>
+        </div>
+        <!-- /.form-box -->
+      </div><!-- /.card -->
+    </div>
+    <!-- /.register-box -->
+  </div>
+
+<!-- jQuery -->
+<script src="../js/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../styles/bootstrap-4.5/js/bootstrap.bundle.min.js"></script>
+
+<script type="text/javascript">
+  function showPassword(){
+  var pass = document.getElementById("register-password");
+  var com_pass = document.getElementById("register-confirm-password");
+
+    if(pass.type == "password"){
+      pass.type = "text";
+      com_pass.type = "text";
+    } else{
+      pass.type = "password";
+      com_pass.type = "password";    
+    }
+  }
+</script>
+
+<script type="text/javascript">
+
+  // validate email input 
+
+  function validateEmail(email) 
+  {
+      var re = /^(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
+      return re.test(email);
+  }
+
+  function checkInputReg(){
+
+      var firstName = document.getElementById('register-first-name').value;
+      var lastName = document.getElementById('register-last-name').value;
+      var email = document.getElementById('register-email').value;
+      var phoneNumber = document.getElementById('register-phone-number').value;
+      var password = document.getElementById('register-password').value;
+      var confirmPassword = document.getElementById('register-confirm-password').value;
+
+      if(firstName.length >=2 && lastName.length >=2 && validateEmail(email) && phoneNumber.length >=10 && password.length >=6 && password === confirmPassword)
+        {
+          $('.sign-up').removeAttr('disabled');
+        } 
+      else
+        {
+          $('.sign-up').prop('disabled',true);
+        }      
+  }
+</script>
+
+</body>
+</html>

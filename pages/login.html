@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sign in - MonkeyPesa</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- BootStrap-->
+  <link rel="stylesheet" href="../styles/bootstrap-4.5/css/bootstrap.min.css">
+  <!-- Font Awesome  -->
+  <link rel="stylesheet" href="../styles/fontawesome-free-5.15/css/all.min.css">
+  <!-- custom style -->
+  <link rel="stylesheet" href="../styles/styles.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition body-custom">
+
+<section class="login-page">
+
+  <div class="login-box">
+    <div class="login-logo">
+      <a href="#"><img src="../img/logo.png" style="height: 30px; width: auto;"></a>
+    </div>
+    <p class="login-box-msg">Don't have an account? <a href="register.html">Sign up</a></p>
+    <!-- /.login-logo -->
+    <div class="box">
+      <div class="box-body login-card-body">
+        
+
+        <form action="index.html" method="post">
+          <div class="form-group mb-4">
+            <label for="login-email">Email Address</label>
+            <input  oninput="checkInput()" id="login-email" type="email" class="form-control" placeholder="">            
+          </div>
+          <div class="form-group mb-4">
+            <label class="d-block" for="login-password">Password </label>
+            <input oninput="checkInput()" type="password" class="form-control" id="login-password" placeholder="">            
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <div class="icheck-primary  col-7 inline">
+                <input type="checkbox" id="remember">
+                <label for="remember">
+                  Remember Me
+                </label>
+              </div>
+              <a class="mb-2" href="forgot-password.html">I forgot my password</a>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+                <button type="submit" id="submit-login" class="sign-in btn btn-primary btn-block btn-mp-disabled float-right" disabled="">Sign In</button>
+            </div>
+            <!-- /.col -->            
+          </div>
+        </form> 
+        
+        <div class="social-auth-links text-center mb-3">
+          <p>- OR -</p>
+          <a href="#" class="btn btn-block btn-primary">
+            <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+          </a>
+          <a href="#" class="btn btn-block btn-danger">
+            <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+          </a>
+      </div>
+
+         <div class="d-block text-center mb-2 text-xs">&copy; 2020 MonkeyPesa. All Rights Reserved</div>
+         <div class="d-block text-center"><strong><a href="#">Privacy Policy</a></strong></div>       
+        
+      </div>
+      <!-- /.login-card-body -->
+    </div>
+  </div>
+  <!-- /.login-box -->
+</section>
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../styles/bootstrap-4.5/js/bootstrap.bundle.min.js"></script>
+
+<script type="text/javascript">
+
+  // validate email input 
+
+  function validateEmail(email) 
+  {
+      var re = /^(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
+      return re.test(email);
+  }
+
+  function checkInput(){
+
+      var mail_e = document.getElementById('login-email');
+      var el = document.getElementById('login-password');
+      var email = mail_e.value;
+      var password = el.value;
+
+      if(validateEmail(email) && password.length >= 6)
+        {
+          $('.sign-in').removeAttr('disabled');
+        } 
+      else
+        {
+          $('.sign-in').prop('disabled',true);
+        }
+      
+  }
+</script>
+
+</body>
+</html>
