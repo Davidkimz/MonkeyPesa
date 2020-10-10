@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Login - MonkeyPesa</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- BootStrap-->
+  <link rel="stylesheet" href="../styles/bootstrap-4.5/css/bootstrap.min.css">
+  <!-- Font Awesome  -->
+  <link rel="stylesheet" href="../styles/fontawesome-free-5.15/css/all.min.css">
+  <!-- custom style -->
+  <link rel="stylesheet" href="../styles/styles.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition body-custom">
+  <!-- Register Page !-->
+  <div class=" login-page row">
+    <div class="login-form col-lg-4">
+      <!-- Page Logo !-->
+      <div>
+        <img class="page-logo" src="../img/logo.png" alt="Page Logo Here">
+      </div>
+      <!-- End Page Logo !-->
+      <form action="sales.html">
+
+        <div class="col-md-10">
+          <label class="form-group">Email</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text fas fa-envelope"></span>
+            </div>
+            <input type="email" id="register-email" class="form-control" oninput="checkRegisterInput('login')" placeholder="Email">
+          </div>
+        </div>
+
+        <div class="input-group col-md-10">
+          <label class="form-group">Password</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text fas fa-lock"></span>
+            </div>
+            <input type="password" id="register-password" class="form-control" oninput="checkRegisterInput('login')" placeholder="Password">
+          </div>
+        </div>
+
+        <div class="input-group col-md-10 register-margin-top">
+          <button type="submit" class="btn btn-primary btn-block register" disabled="disabled">Login</button>
+        </div>
+        <div class="input-group col-md-10 register-margin-top">
+          <a class="btn btn-danger btn-block" href="#" role="button">Login with Google Account</a>
+        </div>
+
+        <div class="input-group col-md-10">
+          <a href="forgot-password.html" class="form-group register-margin-top">Forgot Password ?</a>
+          <div class="form-group">Don't have an account ? &nbsp<a href="register.html">Sign UP</a></div>
+        </div>
+
+      </form>
+    </div>
+    <div class="register-image col-md-8 col-lg-8">
+
+    </div>
+  </div>
+<!-- End Register Page !-->
+
+<!-- Footer !-->
+  <footer class="main-footer text-center">
+    <strong>Copyright &copy; 2020 <a href="#">MonkeyPesa</a>.</strong> All rights
+    reserved.
+  </footer>
+<!-- End Footer !-->
+
+<!-- jQuery -->
+<script src="../js/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../styles/bootstrap-4.5/js/bootstrap.bundle.min.js"></script>
+<!-- Main Javascript -->
+<script src="../js/main.js"></script>
+
+</body>
+</html>
