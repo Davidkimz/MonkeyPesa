@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - MonkeyPesa</title>
+  <%- include('../common/header.ejs') %>
+</head>
+<body class="hold-transition body-custom">
+  <!-- Register Page !-->
+  <div class=" login-page row">
+    <div class="login-form col-lg-4">
+      <!-- Page Logo !-->
+      <div>
+        <img class="page-logo" src="/shared/img/logo.png" alt="Page Logo Here">
+      </div>
+      <!-- End Page Logo !-->
+      <form name="login" method="POST" action="login">
+
+        <div class="col-md-10">
+          <label class="form-group" for="email">Email</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text fas fa-envelope"></span>
+            </div>
+            <input type="email" name="email" id="email" class="form-control" oninput="checkRegisterInput('login')" placeholder="Email">
+          </div>
+        </div>
+
+        <div class="input-group col-md-10">
+          <label class="form-group" for="password">Password</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text fas fa-lock"></span>
+            </div>
+            <input type="password" name="password" id="password" class="form-control" oninput="checkRegisterInput('login')" placeholder="Password" autocomplete="current-password">
+          </div>
+        </div>
+
+        <div class="input-group col-md-10 register-margin-top">
+          <button type="submit" class="btn btn-primary btn-block register" disabled="disabled">Login</button>
+        </div>
+        <div class="input-group col-md-10 register-margin-top">
+          <a class="btn btn-danger btn-block" href="#" role="button">Login with Google Account</a>
+        </div>
+
+        <div class="input-group col-md-10">
+          <a href="forgot-password" class="form-group register-margin-top">Forgot Password ?</a>
+          <div class="form-group">Don't have an account ? &nbsp<a href="register">Sign UP</a></div>
+        </div>
+
+      </form>
+    </div>
+    <div class="register-image col-md-8 col-lg-8">
+
+    </div>
+  </div>
+<!-- End Register Page !-->
+
+<!-- Footer !-->
+<%- include('../common/footer.ejs') %>
+<!-- End Footer !-->
+
+</div>
+<!-- ./wrapper -->
+
+<!-- Javascript Files !-->
+<%- include('../common/jsinclude.ejs') %>
+<!-- End Javascript Files !-->
+
+</body>
+</html>

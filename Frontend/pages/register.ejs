@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign up - MonkeyPesa</title>
+  <% include common/header.ejs %>
+</head>
+<body class="hold-transition body-custom">
+  <!-- Register Page !-->
+  <div class=" register-page row">
+    <div class="register-form col-lg-4">
+      <!-- Page Logo !-->
+      <div>
+        <img class="page-logo" src="../img/logo.png" alt="Page Logo Here">
+      </div>
+      <!-- End Page Logo !-->
+      <form method="POST" action="/users">
+        <div class="col-md-10">
+          <label class="form-group">Name</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text fa fa-user"></span>
+            </div>
+            <input type="text" class="form-control" id="register-name" oninput="checkRegisterInput('register')" placeholder="Name">
+          </div>
+        </div>
+
+        <div class="col-md-10">
+          <label class="form-group">Email</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text fas fa-envelope"></span>
+            </div>
+            <input type="email" class="form-control" id="register-email" oninput="checkRegisterInput('register')" placeholder="Email">
+          </div>
+        </div>
+
+        <div class="col-md-10">
+          <label class="form-group">Website</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text fas fa-address-card"></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Website">
+          </div>
+        </div>
+
+        <div class="input-group col-md-10">
+          <label class="form-group">Password</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text fas fa-lock"></span>
+            </div>
+            <input type="password" class="form-control" id="register-password" oninput="checkRegisterInput('register')" placeholder="Password">
+          </div>
+        </div>
+
+        <div class="input-group col-md-10 register-margin-top">
+          <button type="submit" class="btn btn-primary btn-block register" disabled>Sign UP</button>
+        </div>
+        <div class="input-group col-md-10 register-margin-top">
+          <a class="btn btn-danger btn-block" href="#" role="button">Use Google Account</a>
+        </div>
+
+        <div class="input-group col-md-10">
+          <a href="forgot-password.html" class="form-group register-margin-top">Forgot Password ?</a>
+          <div class="form-group">Have an account already ? &nbsp<a href="login.html">Signin</a></div>
+        </div>
+
+      </form>
+    </div>
+    <div class="register-image col-md-8 col-lg-8">
+
+    </div>
+  </div>
+<!-- End Register Page !-->
+
+<!-- Footer !-->
+<% include common/footer.ejs %>
+<!-- End Footer !-->
+
+<!-- jQuery -->
+<script src="../js/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../styles/bootstrap-4.5/js/bootstrap.bundle.min.js"></script>
+<!-- Main Javascript -->
+<script src="../js/main.js"></script>
+
+
+</body>
+</html>

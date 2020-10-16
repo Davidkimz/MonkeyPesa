@@ -1,14 +1,18 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { findById } = require("../models/userModel");
+const assert = require("assert");
 
 
 class UserController {
 
     //REGISTER NEW uSER
 async register(req, res) { 
+
+    console.log("Helooooo Check kkfdfkk kfkdkfkdkvv fkfkdfkdlf fdfkdkfkdkf fkdfkdkfdk");
     try {
-        let {email, password, role,  passwordCheck, displayName } = req.body;
+        let {email, password, role,  passwordCheck, displayName, website } = req.body;
+
     //Validation-check
         //all fields have been filled
     if(!email || !password || !passwordCheck){
@@ -42,15 +46,17 @@ async register(req, res) {
         password: passwordHash,
         displayName,
         role,
+        website,
     });
     const savedUser = await newUser.save();
     res.json(savedUser);
-
+    res.redirect('/sales');
    
     //Catching errors
     } catch(err){
         res.status(500).json({ error: err.message})
     }
+
 }
 
 //GET ALL ACCOUNTS
@@ -90,11 +96,13 @@ async deleteAccount(req, res){
 
 //LOGIN USER
  async login(req, res) {
+     
     try{
         //Login Validation
         const {email, password, role} = req.body;
         if(!email || !password)
         return res.status(400).json({msg: "Not all fields have been entered"})
+
     
         //Validate password we enter and users password
         const user = await User.findOne({  email: email})
@@ -154,6 +162,19 @@ async isTokenValid(req, res){
         res.redirect('/');
       }
 
+
+    // This displays the Corresponding pages
+    users(req, res) {
+        res.render('../views/pages/users.ejs', res);
+      }
+
+    login(req, res) {
+        res.render('../views/pages/login.ejs', res);
+      }
+    
+    register(req, res) {
+        res.render('../views/pages/register.ejs', res);
+      }
 }
 
 module.exports = UserController;

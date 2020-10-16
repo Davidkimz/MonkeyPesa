@@ -1,6 +1,7 @@
 //Require modules
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
 
@@ -9,6 +10,11 @@ const app = express();
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 app.use(cors()); 
+app.use('/shared', express.static('shared'));
+app.use(bodyParser.json());
+
+//Set EJS as Template Engine
+app.set('view engine', 'ejs');
 
 //Local Db connection
 // mongoose.connect(

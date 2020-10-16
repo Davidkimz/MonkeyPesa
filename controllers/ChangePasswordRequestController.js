@@ -71,6 +71,11 @@ class ChangePasswordRequestController {
       message: "Password has been successfully reset!!",
     });
   }
+
+  // This displays the Corresponding page
+  forgotPassword(req, res) {
+    res.render('../views/pages/forgot-password.ejs', res);
+  }
 }
 
-module.exports = new ChangePasswordRequestController();
+module.exports = new ChangePasswordRequestController;
