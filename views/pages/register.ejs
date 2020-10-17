@@ -15,12 +15,12 @@
       <!-- End Page Logo !-->
       <form name="register" method="post" action="register">
         <div class="col-md-10">
-          <label class="form-group" for="name">Name</label>
+          <label class="form-group" for="displayName">Name</label>
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text fa fa-user"></span>
             </div>
-            <input type="text" class="form-control" name="name" id="name" oninput="checkRegisterInput('register')" placeholder="Name">
+            <input type="text" class="form-control" name="displayName" id="displayName" oninput="checkRegisterInput('register')" placeholder="Name">
           </div>
         </div>
 
@@ -51,6 +51,16 @@
               <span class="input-group-text fas fa-lock"></span>
             </div>
             <input type="password" class="form-control" name="password" id="password" oninput="checkRegisterInput('register')" placeholder="Password" autocomplete="current-password">
+          </div>
+        </div>
+
+        <div class="input-group col-md-10">
+          <label class="form-group" for="passwordCheck">Repeat Password</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text fas fa-lock"></span>
+            </div>
+            <input type="password" class="form-control" name="passwordCheck" id="passwordCheck" oninput="checkRegisterInput('register')" placeholder="Repeat Password">
           </div>
         </div>
 

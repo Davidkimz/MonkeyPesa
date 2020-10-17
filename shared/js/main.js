@@ -20,21 +20,23 @@
     if (formname == 'register' || formname == 'login') { //Check For New User Registering or Login
 
         var password = document.getElementById('password').value;
+        
         if (formname == 'register') {
-          var name = document.getElementById('name').value;
-          activateButton(name, email, password, 'register'); 
+          var passwordCheck = document.getElementById('passwordCheck').value;
+          var displayName = document.getElementById('displayName').value;
+          activateButton(displayName, email, password, passwordCheck, 'register'); 
         } else {
-          activateButton('', email, password, 'login'); 
+          activateButton('', email, password, '', 'login'); 
         }
 
       } else {
-        activateButton('', email, '', 'forgot'); //Reset Passowrd form
+        activateButton('', email, '', '', 'forgot'); //Reset Passowrd form
       }      
   }
 
-  function activateButton(name, email, password, send){
+  function activateButton(displayName, email, password, passwordCheck, send){
     if(validateEmail(email) && send == 'forgot' || validateEmail(email) && password.length >=6 && send == 'login' ||
-     name.length >=2 && validateEmail(email) && password.length >=6 && send == 'register')
+    displayName.length >=2 && validateEmail(email) && password.length >=6 && password == passwordCheck && send == 'register')
         {
           $('.register').removeAttr('disabled');
         } 
@@ -46,12 +48,3 @@
 
   //Finish Register, Login and Password form check for input
 
-  //Sort Tables
-  function sortTables(){
-    $(document).ready(function () {
-    $('#contacts-table').DataTables({
-    "order": [[ 3, "desc" ]]
-    });
-    $('.dataTables_length').addClass('bs-select');
-    });
-  }

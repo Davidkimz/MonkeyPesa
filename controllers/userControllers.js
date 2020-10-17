@@ -3,13 +3,11 @@ const jwt = require("jsonwebtoken");
 const { findById } = require("../models/userModel");
 const assert = require("assert");
 
-
 class UserController {
 
     //REGISTER NEW uSER
 async register(req, res) { 
 
-    console.log("Helooooo Check kkfdfkk kfkdkfkdkvv fkfkdfkdlf fdfkdkfkdkf fkdfkdkfdk");
     try {
         let {email, password, role,  passwordCheck, displayName, website } = req.body;
 
@@ -48,12 +46,12 @@ async register(req, res) {
         role,
         website,
     });
-    const savedUser = await newUser.save();
-    res.json(savedUser);
+    await newUser.save();
     res.redirect('/sales');
    
     //Catching errors
     } catch(err){
+        res.send("recieved your request!");
         res.status(500).json({ error: err.message})
     }
 
@@ -116,15 +114,7 @@ async deleteAccount(req, res){
         return res.status(400).json({msg: "Invalid Credentials"})
     
         const token = jwt.sign({ id: user._id}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRES_IN});
-        res.json({
-            token,
-            user: {
-                id: user._id,
-                displayName: user.displayName,
-                email:email,
-                role,
-            }
-        });
+        res.redirect('/sales');
     } catch(err){
         res.status(500).json({error: err.message});
     }
@@ -167,14 +157,7 @@ async isTokenValid(req, res){
     users(req, res) {
         res.render('../views/pages/users.ejs', res);
       }
-
-    login(req, res) {
-        res.render('../views/pages/login.ejs', res);
-      }
     
-    register(req, res) {
-        res.render('../views/pages/register.ejs', res);
-      }
 }
 
 module.exports = UserController;

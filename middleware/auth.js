@@ -8,7 +8,8 @@ const ensureAuthenticated = (req, res, next) => {
         if(!token)
         return res
         .status(401)
-        .json({ msg: "No authentication token, authorization denied. Please log in" });
+        .render('../views/pages/login.ejs', res);
+        //.json({ msg: "No authentication token, authorization denied. Please log in" });
 
 
         /*If there is a token. we verify the token(jwt.verify decodes the token: 
@@ -17,7 +18,8 @@ const ensureAuthenticated = (req, res, next) => {
         if(!verified)
         return res
         .status(401)
-        .json({ msg: "Token verification failed, authorization denied. " });
+        .render('../views/pages/login.ejs', res);
+        //.json({ msg: "Token verification failed, authorization denied. " });
         req.user = verified.id;
         next();
     } catch(err){
@@ -26,7 +28,5 @@ const ensureAuthenticated = (req, res, next) => {
 };   
 
 
-
-
-module.exports = ensureAuthenticated
+module.exports = ensureAuthenticated;
 // module.exports = restrictTo

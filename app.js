@@ -11,7 +11,13 @@ app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 app.use(cors()); 
 app.use('/shared', express.static('shared'));
-app.use(bodyParser.json());
+
+
+//To Pass form inputs as application/x-www-form-urlencoded
+app.use(express.urlencoded({
+    extended: true
+}))
+
 
 //Set EJS as Template Engine
 app.set('view engine', 'ejs');
@@ -58,6 +64,7 @@ app.use('/users', require("./Routes/userRoutes"))
 app.use("/contacts", require("./Routes/contactRoutes"))
 app.use("/email", require("./Routes/emailRoutes"))
 app.use("/sms", require("./Routes/smsRoutes"))
+app.use("/sales", require("./Routes/saleRoutes"))
 
 //PORT
 const PORT = process.env.PORT || 5000;

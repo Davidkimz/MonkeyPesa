@@ -15,11 +15,16 @@ const  resetPasswordController = require("../controllers/ChangePasswordRequestCo
 router.get("/"  ,(req, res) => userController.getAllAccounts(req, res));
 
 //REGISTER ROUTE
-router.get("/register", (req, res) => userController.register(req, res));
+router.get("/register", (req, res) => {
+    res.render('../views/pages/register.ejs');
+});
+
 router.post("/register", (req, res) => userController.register(req, res));
 
 //LOGIN
-router.get("/login", (req, res) => userController.login(req, res));
+router.get("/login", (req, res) => {
+    res.render('../views/pages/login.ejs');
+});
 router.post("/login", (req, res) => userController.login(req,res));
 
 //Delete account(on a private route allows you delete only your account)

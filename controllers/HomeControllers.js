@@ -8,30 +8,16 @@ class HomeController {
     }
   
     about(req, res) {
-      res.render('home/about');
+      res.render('../views/pages/about.ejs', res);
     }
   
     contact(req, res) {
-      returnHtml('./../contacts.html', res);
+      res.render('../views/pages/contacts.ejs', res);
     }
   
    
   }
 
-  
-  //Call Html Pages
-  function returnHtml(filepath, res){
-      res.writeHead(200, {'Content-Type': 'text/html'});
-      fs.readFile(filepath, null, function(error, data){
-        if (error){
-            res.writeHead(404);
-            res.write('File not found');
-        } else {
-            res.write(data);
-        }
-        res.end();
-      });
-  }
   
   module.exports = new HomeController;
   
