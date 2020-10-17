@@ -59,12 +59,13 @@ mongoose.connect(
 
 //ROUTES
 app.use('/', require("./Routes/homeRoute"));
-app.use("/password", require("./Routes/ChangePasswordRequestRoute"))
+app.use('/password', require("./Routes/ChangePasswordRequestRoute"))
 app.use('/users', require("./Routes/userRoutes"))
-app.use("/contacts", require("./Routes/contactRoutes"))
-app.use("/email", require("./Routes/emailRoutes"))
-app.use("/sms", require("./Routes/smsRoutes"))
-app.use("/sales", require("./Routes/saleRoutes"))
+app.use('/sales', require("./Routes/saleRoutes"))
+app.use('/contacts', require("./Routes/contactRoutes"))
+app.use('/email', require("./Routes/emailRoutes"))
+app.use('/sms', require("./Routes/smsRoutes"))
+
 
 //PORT
 const PORT = process.env.PORT || 5000;

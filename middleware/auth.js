@@ -19,7 +19,7 @@ const ensureAuthenticated = (req, res, next) => {
         return res
         .status(401)
         .render('../views/pages/login.ejs', res);
-        //.json({ msg: "Token verification failed, authorization denied. " });
+
         req.user = verified.id;
         next();
     } catch(err){

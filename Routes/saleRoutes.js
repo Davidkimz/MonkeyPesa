@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const saleController = require('../controllers/SaleControllers');
+const ensureAuthenticated= require("../middleware/auth")
 
-router.get('/sales', (req, res) => saleController.sales(req, res));
+const SaleController = require("../controllers/SaleControllers")
+const saleController = new SaleController();
 
-router.get('/contact', (req, res) => saleController.contact(req, res));
 
-router.get('/list', (req, res) => saleController.list(req, res));
+router.get('/', ensureAuthenticated, (req, res) => saleController.sales(req, res));
+
+router.get('/list', ensureAuthenticated, (req, res) => saleController.list(req, res));
 
 module.exports = router;
