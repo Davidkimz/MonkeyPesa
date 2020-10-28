@@ -9,7 +9,7 @@
 <div class="wrapper">
   <!-- Page Logo !-->
   <div>
-  	<img class="logo-main" src="../img/logo.png" alt="Page Logo Here">
+  	<img class="logo-main" src="/shared/img/logo.png" alt="Page Logo Here">
   </div>
   <!-- End Page Logo !-->
 
@@ -17,19 +17,27 @@
   <nav class="main-header">
     <ul class="nav justify-content-center">
       <li class="nav-item">
-        <a href="#" class="nav-link active">Contacts</a>
+        <a href="/sales" class="nav-link active">Sales</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a href="/" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false">Contacts</a>
+        <ul class="dropdown-menu">
+          <li><a  href="/contacts" class="dropdown-item active">Contacts</a></li>
+          <li><a  href="contacts/lists" class="dropdown-item active">Lists</a></li>
+          <li><a href="contacts/companies" class="dropdown-item">Companies</a></li>
+        </ul>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link">Deals</a>
+        <a href="/deals" class="nav-link">Deals</a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link">Tasks</a>
+        <a href="/tasks" class="nav-link">Tasks</a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">Automation</a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link">Calendar</a>
+        <a href="/calendar" class="nav-link">Calendar</a>
       </li>
       <li class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false">More</a>
@@ -47,10 +55,7 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a href="login.html" class="nav-link">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="btn btn-primary btn-lg" href="register.html" role="button">Sign UP</a>
+        <a href="users/logout" class="nav-link">Logout</a>
       </li>
     </ul>
   </nav>
@@ -58,31 +63,58 @@
 
 <!-- Main Content !-->
   <div class="main-content">
-    <h3 class="text-left">
-      Contacts
-    </h3>
+    <div class="add-form-popup p-0 mx-auto" id="addForm">
+      <!-- Form !-->
+      <%- include('../common/form.ejs') %>
+      <!-- End Form!-->
+    </div>
 
-  	<div class="table-responsive">
+    <div class="row">
+      <div class="col-md-8 col-lg-8">
+        <h3 class="text-left">
+          Users
+        </h3>
+      </div>
+      <div class="col-md-4 col-lg-4 no-list-style">
+        <ul class="d-flex flex-row-reverse header-list">
+          <li class="nav-item">
+            <a class="btn btn-info" href="/users/import" role="button">Import</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-secondary" href="/users/actions" role="button">Actions</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-primary" href="#" role="button" onclick="addForm()">Add User</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="table-responsive">
       <table class="table table-hover" id="contacts-table">
         <thead>
           <tr>
             <th></th>
             <th>Name</th>
             <th>Email</th>
-            <th>Created Date</th>
-            <th>Address</th>
+            <th>Has Password</th>
+            <th>Role</th>
+            <th>Website</th>
             <th>Status</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Check</td>
-            <td>Alex</td>
-            <td>alextest@gmail.com</td>
-            <td>10/10/2020</td>
-            <td>Kampala, Uganda</td>
-            <td>Confirmed</td>
-          </tr>
+            <% for(var j = 0; j < data.length; j++ ){ %>
+              <tr>
+                <td></td>
+                <td><%= data[j].displayName %></td>
+                <td><a href="mailto:<%= data[j].email %>?subject=MonkeyPesa Email&body=Hello <%= data[j].displayName %>,"><%= data[j].email %></a></td>
+                <td><%= (data[j].password.length > 1)?"Yes":"No" %></td>
+                <td><%= data[j].role %></td>
+                <td><%= data[j].website %></td>
+                <td>Confirmed</td>
+              </tr>
+            <% } %>
         </tbody>
       </table>
     </div>

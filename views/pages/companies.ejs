@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Contacts | MonkeyPesa</title>
+  <title>Companies | MonkeyPesa</title>
   <%- include('../common/header.ejs') %>
 </head>
 
@@ -19,13 +19,8 @@
       <li class="nav-item">
         <a href="/sales" class="nav-link active">Sales</a>
       </li>
-      <li class="nav-item dropdown">
-        <a href="/" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false">Contacts</a>
-        <ul class="dropdown-menu">
-          <li><a  href="#" class="dropdown-item active">Contacts</a></li>
-          <li><a  href="contacts/lists" class="dropdown-item">Lists</a></li>
-          <li><a href="contacts/companies" class="dropdown-item">Companies</a></li>
-        </ul>
+      <li class="nav-item">
+        <a href="#" class="nav-link active">Contacts</a>
       </li>
       <li class="nav-item">
         <a href="/deals" class="nav-link">Deals</a>
@@ -72,16 +67,16 @@
     <div class="row">
       <div class="col-md-8 col-lg-8">
         <h3 class="text-left">
-          Contacts
+          Companies
         </h3>
       </div>
       <div class="col-md-4 col-lg-4 no-list-style">
         <ul class="d-flex flex-row-reverse header-list">
           <li class="nav-item">
-            <a class="btn btn-info" href="/contacts/import" role="button">Import</a>
+            <a class="btn btn-info" href="/companies/import" role="button">Import</a>
           </li>
           <li class="nav-item">
-            <a class="btn btn-secondary" href="/contacts/actions" role="button">Actions</a>
+            <a class="btn btn-secondary" href="/companies/actions" role="button">Actions</a>
           </li>
           <li class="nav-item">
             <a class="btn btn-primary" href="#" role="button" onclick="addForm()">Add Contact</a>
@@ -91,16 +86,41 @@
     </div>
 
   	<div class="table-responsive">
+
       <table class="table table-hover" id="contacts-table">
         <thead>
           <tr>
             <th></th>
             <th>Name</th>
             <th>Email</th>
+            <th>Created Date</th>
+            <th>Address</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Check</td>
+            <td>Alex</td>
+            <td>alextest@gmail.com</td>
+            <td>10/10/2020</td>
+            <td>Kampala, Uganda</td>
+            <td>Confirmed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-hover" id="contacts-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Has Password</th>
             <th>Role</th>
-            <th>Company</th>
-            <th>Phone Number</th>
-            <th>Country</th>
+            <th>Website</th>
             <th>Status</th>
           </tr>
         </thead>
@@ -108,12 +128,11 @@
             <% for(var j = 0; j < data.length; j++ ){ %>
               <tr>
                 <td></td>
-                <td><%= data[j].firstName %> <%= data[j].lastName %></td>
-                <td><a href="mailto:<%= data[j].email %>?subject=MonkeyPesa Email&body=Hello <%= data[j].firstName %>,"><%= data[j].email %></a></td>
+                <td><%= data[j].displayName %></td>
+                <td><%= data[j].email %></td>
+                <td><%= data[j].password %></td>
                 <td><%= data[j].role %></td>
-                <td><%= data[j].company %></td>
-                <td><%= data[j].phoneNumber %></td>
-                <td><%= data[j].country %></td>
+                <td><%= data[j].website %></td>
                 <td>Confirmed</td>
               </tr>
             <% } %>

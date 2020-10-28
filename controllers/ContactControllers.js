@@ -11,6 +11,7 @@ class ContactController {
              company, phoneNumber, website, address, 
             city, zipCode, country
              } = req.body; 
+
     if(!firstName || !lastName || !email, !role || !tags || !company || !phoneNumber || !website || !address || !city || !zipCode || !country){
         return res.status(400).json({msg: "Not all fields have been entered"})
     }
@@ -40,8 +41,8 @@ class ContactController {
     });
 
     const savedContact = await newContact.save();
-    res.json(savedContact);
-    console.log(savedContact)
+    res.redirect('/contacts');
+
     //Catching errors
     } catch(err){
         res.status(500).json({ error: err.message})
@@ -61,7 +62,7 @@ class ContactController {
             const contacts = await query
 
             //send response
-            res.status(200).json(contacts)
+            return contacts;
         } catch(err){
             res.status(500).json({ error: err.message})
         }

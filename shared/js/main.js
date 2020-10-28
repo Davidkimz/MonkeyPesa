@@ -48,3 +48,18 @@
 
   //Finish Register, Login and Password form check for input
 
+//Add Form popup
+function addForms(){
+  document.getElementById("addForm").style.display = "block";
+  
+}
+
+var modal = document.querySelector(".add-form-popup");
+
+function addForm() {
+  modal.classList.toggle("show-modal");
+}
+
+function closeForm(){
+  document.getElementById("addForm").style.display = "none";
+}

@@ -2,6 +2,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const session = require("express-session");
+const flash = require("connect-flash");
+const cookie = require("cookie-session");
 const cors = require("cors");
 require("dotenv").config();
 
@@ -18,6 +21,14 @@ app.use(express.urlencoded({
     extended: true
 }))
 
+//Use Flash and Cookie session
+app.use(cookie({
+  name: 'session',
+  keys: ['X_732jjUjsakskkd(', ')dtOuQsd$>@A[w'],
+  maxAge: 1000 * 60
+}))
+
+app.use(flash());
 
 //Set EJS as Template Engine
 app.set('view engine', 'ejs');

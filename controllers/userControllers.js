@@ -2,7 +2,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { findById } = require("../models/userModel");
 const assert = require("assert");
-
+const setSession = require('../middleware/session');
+  
 class UserController {
 
     //REGISTER NEW uSER
@@ -61,10 +62,11 @@ async register(req, res) {
 async getAllAccounts(req, res) {
     try {
         const user =   await User.find();
+
         //send response
-        res.status(200).json(user)
+        return user;
     } catch(err){
-        res.status(500).json({ error: err.message})
+        return res.status(500).json({ error: err.message})
     }
 }
 //GET ONE ACCOUNT
@@ -98,8 +100,13 @@ async deleteAccount(req, res){
     try{
         //Login Validation
         const {email, password, role} = req.body;
-        if(!email || !password)
-        return res.status(400).json({msg: "Not all fields have been entered"})
+        if(!email || !password){
+            req.flash('msg', "Not all fields have been entered");
+            return res
+            .status(400)
+            .json({msg: "Not all fields have been entered"})
+        }
+        
 
     
         //Validate password we enter and users password
@@ -110,10 +117,16 @@ async deleteAccount(req, res){
         .json({msg: "No account with this email has been registered"})
         //Validate if users password matches
         const isMatch = await bcrypt.compare(password, user.password);
-        if(!isMatch)
-        return res.status(400).json({msg: "Invalid Credentials"})
+        if(!isMatch){
+            req.flash('msg', "Invalid Credentials");
+            return res
+            .status(400)
+            .json({msg: "Invalid Credentials"});
+        }
     
         const token = jwt.sign({ id: user._id}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRES_IN});
+        req.session.token = token;
+
         res.redirect('/sales');
     } catch(err){
         res.status(500).json({error: err.message});
@@ -149,6 +162,7 @@ async isTokenValid(req, res){
     
 
      logout(req, res) {
+        req.session.token = "";
         res.redirect('/');
       }
 

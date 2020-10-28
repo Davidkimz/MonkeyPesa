@@ -1,0 +1,24 @@
+<div class="form-holder">
+    <div class="sub-title bg-light"><%= title %></div>
+    <form action="<%= action %>" method="post">
+        <div class="form-fields">
+            <% if( fields.length ){ %>
+                <% fields.forEach(function(field){ %>
+                    <div class="row">
+                        <label class="form-group" for="<%= field.name %>"><%= field.label %></label>
+                        <input class="input-group" type="<%= field.type %>" name="<%= field.name %>" <% if(field.property){ %> <%= field.property %> <% } %> >
+                    </div>
+                <% }) %>
+            <% } %>
+            
+                <div class="row">
+                    <div class="input-group col-md-5 register-margin-top">
+                        <button type="submit" class="btn btn-primary btn-block"><%= title %></button>
+                    </div>
+                    <div class="input-group col-md-5 register-margin-top">
+                        <a class="btn btn-danger btn-block" href="#" role="button" onclick="addForm()">Cancel</a>
+                    </div>
+                </div>
+        </div>
+    </form>
+</div>

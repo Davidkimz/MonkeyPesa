@@ -4,21 +4,26 @@ const jwt = require("jsonwebtoken");
 
 const ensureAuthenticated = (req, res, next) => {
     try {
-        const token = req.header("x-auth-token");
-        if(!token)
-        return res
-        .status(401)
-        .render('../views/pages/login.ejs', res);
-        //.json({ msg: "No authentication token, authorization denied. Please log in" });
+        //const token = req.header("x-auth-token");
+        const token = req.session.token;
+
+        if(!token){
+
+            return res
+            .status(401)
+            .render('../views/pages/login.ejs', res);
+        }
 
 
         /*If there is a token. we verify the token(jwt.verify decodes the token: 
         giving the user info and ID and matches with the secret to ensure token hvent been tampered with)*/
         const verified = jwt.verify(token, process.env.JWT_SECRET);
-        if(!verified)
-        return res
+        if(!verified){
+            return res
         .status(401)
         .render('../views/pages/login.ejs', res);
+        }
+        
 
         req.user = verified.id;
         next();
@@ -26,6 +31,7 @@ const ensureAuthenticated = (req, res, next) => {
         res.status(500).json({ error: err.message});
     }
 };   
+
 
 
 module.exports = ensureAuthenticated;

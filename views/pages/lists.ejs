@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sales | MonkeyPesa</title>
+  <title>Contacts | MonkeyPesa</title>
   <%- include('../common/header.ejs') %>
 </head>
 
@@ -16,12 +16,15 @@
   <!-- The Navigation Menu -->
   <nav class="main-header">
     <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a href="/sales" class="nav-link active">Sales</a>
+      </li>
       <li class="nav-item dropdown">
         <a href="/" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false">Contacts</a>
         <ul class="dropdown-menu">
           <li><a  href="/contacts" class="dropdown-item">Contacts</a></li>
-          <li><a  href="contacts/lists" class="dropdown-item">Lists</a></li>
-          <li><a href="contacts/companies" class="dropdown-item">Companies</a></li>
+          <li><a  href="contacts/lists" class="dropdown-item active">Lists</a></li>
+          <li><a href="companies" class="dropdown-item">Companies</a></li>
         </ul>
       </li>
       <li class="nav-item">
@@ -60,72 +63,52 @@
 
 <!-- Main Content !-->
   <div class="main-content">
-    <h3 class="text-left">
-      Sales Dashboard
-    </h3>
-
-  	<div class="row">
-      <div class="col-lg-6">
-        <div class="card contacts-card">
-          <div class="card-body">
-            <h4 class="card-title">Working with Sales</h4>
-            <p class="card-text">
-              <ol>
-                <li>Contracts are either leads generated through marketing or people who have subscribed for your product.</li>
-                <li>Create deals and track their progress visually using our pipeline manager.</li>
-                <li>Create follow up tasks on each lead and track all your to-do tasks in one place.</li>
-                <li>Create your time slots and share your calendar link to your customers to book the meeting slots.
-              </ol>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card deals-card">
-          <div class="card-body">
-            <h3 class="card-title">Deals</h3>
-            <p class="card-text">No Deals Yet</p>
-          </div>
-        </div>
-      </div>
+    <div class="add-form-popup p-0 mx-auto" id="addForm">
+      <!-- Form !-->
+      <%- include('../common/form.ejs') %>
+      <!-- End Form!-->
     </div>
 
     <div class="row">
-      <div class="col-lg-6">
-        <div class="card tasks-card">
-          <div class="card-body">
-            <h3 class="card-title">Tasks</h3>
-            <p class="card-text">No Tasks Yet</p>
-          </div>
-        </div>
+      <div class="col-md-8 col-lg-8">
+        <h3 class="text-left">
+          Lists
+        </h3>
       </div>
-      <div class="col-lg-6">
-        <div class="card appointments-card">
-          <div class="card-body">
-            <h3 class="card-title">Appointments</h3>
-            <p class="card-text">No Appointments Yet</p>
-          </div>
-        </div>
+      <div class="col-md-4 col-lg-4 no-list-style">
+        <ul class="d-flex flex-row-reverse header-list">
+          <li class="nav-item">
+            <a class="btn btn-primary" href="#" role="button" onclick="addForm()">Add List</a>
+          </li>
+        </ul>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="card calls-card">
-          <div class="card-body">
-            <h3 class="card-title">Call Count</h3>
-            <p class="card-text">No Calls Yet</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card deal-count-card">
-          <div class="card-body">
-            <h3 class="card-title">Deal Count</h3>
-            <p class="card-text">No Deal Counts Yet</p>
-          </div>
-        </div>
-      </div>
+  	<div class="table-responsive">
+      <table class="table table-hover" id="contacts-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Owner</th>
+            <th>Contacts</th>
+            <th>Status</th>
+            <th>Created On</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% for(var j = 0; j < data.length; j++ ){ %>
+              <tr>
+                <td></td>
+                <td><%= data[j].name %></td>
+                <td><%= data[j].owner %></td>
+                <td><%= data[j].contacts %></td>
+                <td><%= data[j].status %></td>
+                <td><%= data[j].createdOn %></td>
+              </tr>
+            <% } %>
+        </tbody>
+      </table>
     </div>
 
   </div>
@@ -142,6 +125,7 @@
 <!-- Javascript Files !-->
 <%- include('../common/jsinclude.ejs') %>
 <!-- End Javascript Files !-->
+
 
 </body>
 </html>
